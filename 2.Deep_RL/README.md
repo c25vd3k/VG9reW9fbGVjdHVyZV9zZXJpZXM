@@ -9,7 +9,7 @@ If you want to use this notebook on google Colab, put this cell on the top and r
 
 Then move the Support folder for Week08 out accordingly. 
 
-# Note on Colab: 
+# Note on doing exercise in Colab: 
 
 - I have no full authority over the environment on Colab, so the randomness is impossible to control, 
 note that `LunarLander-v2` is a probabilistic environment so not every run is going to be the same! That 

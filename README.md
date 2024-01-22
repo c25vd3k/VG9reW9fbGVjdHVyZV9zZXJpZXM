@@ -45,8 +45,8 @@ Follow the instructions there to install Docker or use the command line:
 - Start Using
 
 Note, if you have problem with "name already exists", you can run:
-- In Linux: `docker stop ece4078-prac && docker rm ece4078-prac`
-- In Windows Powershell: `docker stop ece4078-prac; docker rm ece4078-prac`
+- In Linux: `docker stop tokyo-rl && docker rm tokyo-rl`
+- In Windows Powershell: `docker stop tokyo-rl; docker rm tokyo-rl`
 
 This is a video of my attempt
 
@@ -63,18 +63,4 @@ Note that this repo is just a collection of jupyter notebooks, so if you already
 Sometimes the `ipywidgets` will not work properly out of the box, you have to look online yourself on how to enable that in your `jupyter notebook` or `jupyter lab` (It is pretty straightforward).
 
 If you choose this, you have to figure it out yourself if you experience any problems. If the notebook simply refuse to run, and I cannot replicate the error you are experiencing, I will advise you to install Docker Desktop.
-
-# How to use Deepnote
-
-To launch this repo in Deepnote and run:
-- Click the "Launch with Deepnote" badge.
-- Press Duplicate button (If you don't have an account, create one).
-- Once it is in your workspace, you can start playing with the notebook.
-
-To do you home work:
-- Work on the notebook with `_exercise.ipynb` suffix
-- Download it locally to your machine
-- Submit the file to Moodle before deadline.
-
-A visual guide is included in this [video](https://youtu.be/zA7RqTRkFPA).
 
