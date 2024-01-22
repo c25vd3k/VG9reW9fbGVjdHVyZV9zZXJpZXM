@@ -39,7 +39,7 @@ Follow the instructions there to install Docker or use the command line:
 
 ## 2. Running the notebook 
 
-- Open terminal, navigate the the repo folder
+- Open terminal (or CMD/Powershell on Windows), navigate the the repo folder
 - Type `docker compose up --build --force-recreate`
 - Copy link to web browser
 - Start Using
@@ -47,8 +47,6 @@ Follow the instructions there to install Docker or use the command line:
 Note, if you have problem with "name already exists", you can run:
 - In Linux: `docker stop tokyo-rl && docker rm tokyo-rl`
 - In Windows Powershell: `docker stop tokyo-rl; docker rm tokyo-rl`
-
-This is a video of my attempt
 
 If you have nvidia driver and NVIDIA container toolkit, and you want to run the docker with GPU, you can run
 
