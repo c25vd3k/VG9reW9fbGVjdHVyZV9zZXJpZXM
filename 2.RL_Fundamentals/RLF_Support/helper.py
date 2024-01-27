@@ -1,6 +1,4 @@
 import numpy as np
-from IntroRL_Support.gym_simple_gridworlds.envs.grid_env import GridEnv
-from IntroRL_Support.gym_simple_gridworlds.envs.grid_2dplot import plot_value_function, plot_policy
 from collections import defaultdict
 from copy import deepcopy
 from matplotlib import pyplot as plt
