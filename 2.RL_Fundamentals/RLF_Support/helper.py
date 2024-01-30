@@ -19,9 +19,9 @@ def encode_policy(grid_env, policy_matrix=None):
 
     if policy_matrix is None:
 
-        policy_matrix = np.array([[3,      3,  3,  -1],
-                                  [0, np.NaN,  0,  -1],
-                                  [0,      2,  0,   2]])
+        policy_matrix = np.array([[3,      3,  3,  np.NaN],
+                                  [0, np.NaN,  0,  np.NaN],
+                                  [0,      2,  0,       2]])
 
     result_policy = defaultdict(lambda: defaultdict(float))
 
@@ -34,7 +34,7 @@ def encode_policy(grid_env, policy_matrix=None):
             for a, _ in grid_env.ACTIONS.items():
                 result_policy[int(s)][int(a)] = 0.0
 
-            if policy_matrix[i, j] >= 0 or not np.isnan(policy_matrix[i, j]):
+            if not np.isnan(policy_matrix[i, j]):
                 result_policy[int(s)][int(policy_matrix[i, j])] = 1.0
 
     return result_policy
@@ -59,49 +59,3 @@ def define_random_policy(grid_env):
         policy_matrix[x, y] = -1
 
     return policy_matrix
-
-def one_step_look_ahead(grid_env, state, value_function):
-    """
-     Compute the action-value function for a state $s$ given the state-value function $v$.
-     
-     :param grid_env (GridEnv): MDP environment
-     :param state (int): state for which we are looking one action ahead
-     :param value_function (dict): state-value function associated to a given policy py
-     
-     :return: (np.array) Action-value function for all actions available at state s
-    """
-    action_values = []
-    
-    for action in grid_env.get_actions():
-        discounted_value = 0
-        for s_next in grid_env.get_states():
-             discounted_value += grid_env.state_transitions[state, action, s_next] * value_function[s_next]
-        
-        q_a = grid_env.rewards[state, action] + grid_env.gamma * discounted_value
-        action_values.append(q_a)
-    
-    return np.array(action_values)
-
-def update_policy(grid_env, cur_policy, value_function):
-    """
-     Update a given policy based on a given value_function
-     
-     :param grid_env (GridEnv): MDP environment
-     :param cur_policy (matrix form): Policy to update
-     :param value_function: state-value function associated to a policy cur_policy
-     
-     :return: (dict) Updated policy
-    """
-    
-    states = grid_env.get_states(exclude_terminal=True)
-    
-    for s in states:
-        # Obtain state-action values for state s using the helper function one_step_look_ahead
-        action_values = one_step_look_ahead(grid_env, s, value_function)
-        
-        # Find (row, col) coordinates of cell with index s
-        row, col = np.argwhere(grid_env.grid == s)[0]
-        
-        cur_policy[row, col] = np.argmax(action_values)
-        
-    return cur_policy
